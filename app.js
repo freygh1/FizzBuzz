@@ -15,4 +15,48 @@
 
 const inputValue = document.getElementById('input-value')
 const btn = document.getElementById('btn')
-const resultCtn = document.getElementById('btn')
+const resultsCtn = document.getElementById('results-ctn')
+const btnReset = document.getElementById('btn-reset')
+
+// Functions
+
+const creatingListElement = (value) => {
+  return resultsCtn.innerHTML += `<li class="number">${value}</li>`
+}
+
+const showResults = () => {
+
+  for (let i = 1; i <= inputValue.value; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      creatingListElement("FizzBuzz")
+    } else if (i % 3 === 0) {
+      creatingListElement("Fizz")
+    } else if (i % 5 === 0) {
+      creatingListElement("Buzz")
+    } else {
+      creatingListElement(i)
+    }
+  }
+}
+
+const verifyMinMax = () => {
+  if (!inputValue.value) {
+    return alert("Insert something, dude!")
+  }
+  else if (inputValue.value < 0 || inputValue.value > 100) {
+    return alert("The value need to be > 0 and <= 100")
+  }
+  else {
+    showResults()
+  }
+}
+
+const cleaningResults = () => {
+  return resultsCtn.innerHTML = ''
+}
+
+btn.addEventListener('click', () => {
+  verifyMinMax()
+})
+
+btnReset.addEventListener('click', cleaningResults)
