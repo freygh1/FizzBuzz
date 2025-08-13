@@ -52,11 +52,17 @@ const verifyMinMax = () => {
 }
 
 const cleaningResults = () => {
-  return resultsCtn.innerHTML = ''
+  resultsCtn.innerHTML = ''
+}
+
+const cleaningValue = () => {
+  inputValue.value = ''
 }
 
 btn.addEventListener('click', () => {
+  cleaningResults()
   verifyMinMax()
+  cleaningValue()
 })
 
 btnReset.addEventListener('click', cleaningResults)
