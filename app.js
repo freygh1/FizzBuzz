@@ -20,10 +20,12 @@ const btnReset = document.getElementById('btn-reset')
 
 // Functions
 
+// This create the list's elements
 const creatingListElement = (value) => {
   return resultsCtn.innerHTML += `<li class="number">${value}</li>`
 }
 
+// This show the result depending by the case
 const showResults = () => {
 
   for (let i = 1; i <= inputValue.value; i++) {
@@ -39,6 +41,7 @@ const showResults = () => {
   }
 }
 
+// Verifying if the number inserted is valid
 const verifyMinMax = () => {
   if (!inputValue.value) {
     return alert("Insert something, dude!")
@@ -51,18 +54,25 @@ const verifyMinMax = () => {
   }
 }
 
+// Clean all the results
 const cleaningResults = () => {
   resultsCtn.innerHTML = ''
 }
 
+// Clean the input
 const cleaningValue = () => {
   inputValue.value = ''
 }
 
+// Calls the buttom what they need to do
 btn.addEventListener('click', () => {
   cleaningResults()
   verifyMinMax()
   cleaningValue()
 })
 
-btnReset.addEventListener('click', cleaningResults)
+// Clean all
+btnReset.addEventListener('click', () => {
+  cleaningResults()
+  cleaningValue()
+})
